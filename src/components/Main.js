@@ -12,11 +12,11 @@ function Main() {
     setInput(value);
   }
 
-  console.log(input);
+  //console.log(input);
 
   const [countriesArray, setCountriesArray] = useState([]);
 
-  // console.log(countriesArray);
+  console.log(countriesArray[0]);
 
   useEffect(() => {
     fetch("https://restcountries.eu/rest/v2/all")
@@ -26,12 +26,31 @@ function Main() {
       });
   }, []);
 
+  const [select, setSelect] = useState("Africa");
+
+  function handleFilterRegion(event) {
+    const { value } = event.target;
+    setSelect(value);
+  }
+
+  console.log(select);
+
   // Wrap input with a form???
 
   return (
     <StyledMain>
       <SearchBar input={input} handleChange={handleChange} />
-      <p>Select form as filter</p>
+      <select
+        value={select}
+        onChange={handleFilterRegion}
+        name="filterByRegion"
+      >
+        <option value="Africa">Africa</option>
+        <option value="America">America</option>
+        <option value="Asia">Asia</option>
+        <option value="Europe">Europe</option>
+        <option value="Oceania">Oceania</option>
+      </select>
       <CountryCards countriesArray={countriesArray} input={input} />
     </StyledMain>
   );
