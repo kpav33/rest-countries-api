@@ -1,5 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+
+import SearchBar from "./SearchBar";
+import CountryCards from "./CountryCards";
 
 function Main() {
   const [input, setInput] = useState("");
@@ -11,22 +14,31 @@ function Main() {
 
   console.log(input);
 
+  const [countriesArray, setCountriesArray] = useState([]);
+
+  // console.log(countriesArray);
+
+  useEffect(() => {
+    fetch("https://restcountries.eu/rest/v2/all")
+      .then((response) => response.json())
+      .then((data) => {
+        setCountriesArray(data);
+      });
+  }, []);
+
   // Wrap input with a form???
 
   return (
-    <main>
-      <StyledInput
-        type="text"
-        name="searchInput"
-        placeholder="Search for a country..."
-        value={input}
-        onChange={handleChange}
-      />
+    <StyledMain>
+      <SearchBar input={input} handleChange={handleChange} />
       <p>Select form as filter</p>
-    </main>
+      <CountryCards countriesArray={countriesArray} input={input} />
+    </StyledMain>
   );
 }
 
-const StyledInput = styled.input``;
+const StyledMain = styled.main`
+  padding: 1rem;
+`;
 
 export default Main;

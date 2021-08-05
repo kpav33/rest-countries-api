@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { GlobalStyles } from "./GlobalStyle.style";
 
 import Header from "./components/Header";
@@ -17,18 +17,6 @@ Your users should be able to:
 */
 
 function App() {
-  const [countriesArray, setCountriesArray] = useState([]);
-
-  console.log(countriesArray);
-
-  useEffect(() => {
-    fetch("https://restcountries.eu/rest/v2/all")
-      .then((response) => response.json())
-      .then((data) => {
-        setCountriesArray(data);
-      });
-  }, []);
-
   return (
     <>
       <GlobalStyles />
