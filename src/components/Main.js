@@ -17,7 +17,7 @@ function Main() {
 
   const [countriesArray, setCountriesArray] = useState([]);
 
-  console.log(countriesArray[0]);
+  // console.log(countriesArray[0]);
 
   useEffect(() => {
     fetch("https://restcountries.eu/rest/v2/all")
@@ -40,8 +40,13 @@ function Main() {
 
   return (
     <StyledMain>
-      <SearchBar input={input} handleChange={handleChange} />
-      <FilterByRegion select={select} handleFilterRegion={handleFilterRegion} />
+      <StyledFiltersDiv>
+        <SearchBar input={input} handleChange={handleChange} />
+        <FilterByRegion
+          select={select}
+          handleFilterRegion={handleFilterRegion}
+        />
+      </StyledFiltersDiv>
       <CountryCards
         countriesArray={countriesArray}
         input={input}
@@ -53,6 +58,22 @@ function Main() {
 
 const StyledMain = styled.main`
   padding: 1rem;
+
+  @media only screen and (min-width: 768px) {
+    padding: 3rem 4rem;
+  }
+`;
+
+const StyledFiltersDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media only screen and (min-width: 768px) {
+    // padding: 4rem;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 `;
 
 export default Main;

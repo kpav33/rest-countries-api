@@ -26,15 +26,28 @@ const StyledInput = styled.input`
   color: var(--light-mode-input);
   font-weight: 300;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+  @media only screen and (min-width: 768px) {
+    width: 500px;
+  }
 `;
 
 const SearchBarWrapper = styled.div`
   position: relative;
 
+  @media only screen and (min-width: 768px) {
+    // todo
+  }
+
   svg {
     position: absolute;
     right: 85%;
     top: 27%;
+
+    @media only screen and (min-width: 768px) {
+      right: 90%;
+      // top: 27%;
+    }
   }
 `;
 

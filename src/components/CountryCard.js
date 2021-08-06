@@ -4,7 +4,9 @@ import styled from "styled-components";
 function CountryCard({ country }) {
   return (
     <CountryCardDiv onClick={() => console.log("Link to country subpage")}>
-      <img src={country.flag} alt={`${country.name} flag`} />
+      <div className="imgTest">
+        <img src={country.flag} alt={`${country.name} flag`} />
+      </div>
       <div className="test">
         <h2>{country.name}</h2>
         <p>
@@ -30,15 +32,42 @@ const CountryCardDiv = styled.div`
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   cursor: pointer;
   margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: auto;
+
+  @media only screen and (min-width: 768px) {
+    margin-bottom: 0;
+  }
+
+  .imgTest {
+    width: 100%;
+    // height: 200px;
+    border-bottom: 2px solid hsl(0, 0%, 92%);
+
+    @media only screen and (min-width: 768px) {
+      height: 200px;
+    }
+  }
 
   img {
-    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    // max-height: 100px;
     border-radius: 10px 10px 0px 0px;
-    position: relative;
+    //position: relative;
+    //flex: 1;
+    // object-fit: cover;
+    // object-fit: scale-down;
+    @media only screen and (min-width: 768px) {
+      object-fit: cover;
+    }
   }
 
   .test {
     padding: 1rem;
+    // flex-basis: 5rem;
   }
 `;
 

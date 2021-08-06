@@ -40,8 +40,16 @@ const HeaderStyled = styled.header`
   padding: 1.3rem 1rem;
   background: white;
 
+  @media only screen and (min-width: 768px) {
+    padding: 0.5rem 4rem;
+  }
+
   h1 {
     font-size: 1rem;
+
+    @media only screen and (min-width: 768px) {
+      font-size: 1.2rem;
+    }
   }
 `;
 

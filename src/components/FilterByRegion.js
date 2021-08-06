@@ -28,6 +28,11 @@ const StyledSelect = styled.select`
   color: var(--light-mode-text);
   font-weight: 600;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+  @media only screen and (min-width: 768px) {
+    margin-top: 0;
+    width: 200px;
+  }
 `;
 
 export default FilterByRegion;
