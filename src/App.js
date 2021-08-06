@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { GlobalStyles } from "./GlobalStyle.style";
+import { ThemeProvider } from "styled-components";
+import { lightTheme, darkTheme } from "./components/Themes.style";
 
 import Header from "./components/Header";
 import Main from "./components/Main";
@@ -17,12 +19,20 @@ Your users should be able to:
 */
 
 function App() {
+  const [theme, setTheme] = useState("light");
+
+  function themeToggler() {
+    return theme === "light" ? setTheme("dark") : setTheme("light");
+  }
+
+  // console.log(theme);
+
   return (
-    <>
+    <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <GlobalStyles />
-      <Header />
+      <Header theme={theme} themeToggler={themeToggler} />
       <Main />
-    </>
+    </ThemeProvider>
   );
 }
 

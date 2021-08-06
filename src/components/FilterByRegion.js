@@ -25,9 +25,10 @@ const StyledSelect = styled.select`
   border-radius: 5px;
   border: none;
   font-family: "Nunito Sans", sans-serif;
-  color: var(--light-mode-text);
+  color: ${({ theme }) => theme.textColor};
+  background: ${({ theme }) => theme.elementsColor};
   font-weight: 600;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-shadow: ${({ theme }) => theme.boxShadow};
 
   @media only screen and (min-width: 768px) {
     margin-top: 0;

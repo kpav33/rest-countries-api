@@ -28,8 +28,8 @@ function CountryCard({ country }) {
 
 const CountryCardDiv = styled.div`
   border-radius: 10px 10px 10px 10px;
-  background: white;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  background: ${({ theme }) => theme.elementsColor};
+  box-shadow: ${({ theme }) => theme.boxShadow};
   cursor: pointer;
   margin-bottom: 3rem;
   display: flex;
@@ -44,7 +44,7 @@ const CountryCardDiv = styled.div`
   .imgTest {
     width: 100%;
     // height: 200px;
-    border-bottom: 2px solid hsl(0, 0%, 92%);
+    border-bottom: ${({ theme }) => theme.borderBottom};
 
     @media only screen and (min-width: 768px) {
       height: 200px;

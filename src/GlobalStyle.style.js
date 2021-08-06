@@ -39,8 +39,8 @@ export const GlobalStyles = createGlobalStyle`
     body {
         margin: 0;
         padding: 0;
-        color: var(--light-mode-text);
-        background: var(--light-mode-background);
+        color: ${({ theme }) => theme.textColor};
+        background: ${({ theme }) => theme.background};
         font-size: 14px;
         font-family: 'Nunito Sans', sans-serif;
 
