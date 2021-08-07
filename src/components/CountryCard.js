@@ -1,9 +1,15 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-function CountryCard({ country }) {
+function CountryCard({ country, allCountries }) {
   return (
-    <CountryCardDiv onClick={() => console.log("Link to country subpage")}>
+    <CountryCardLink
+      to={{
+        pathname: `/country/${country.name}`,
+        state: [country, allCountries],
+      }}
+    >
       <div className="imgTest">
         <img src={country.flag} alt={`${country.name} flag`} />
       </div>
@@ -22,11 +28,11 @@ function CountryCard({ country }) {
           {country.capital}
         </p>
       </div>
-    </CountryCardDiv>
+    </CountryCardLink>
   );
 }
 
-const CountryCardDiv = styled.div`
+const CountryCardLink = styled(Link)`
   border-radius: 10px 10px 10px 10px;
   background: ${({ theme }) => theme.elementsColor};
   box-shadow: ${({ theme }) => theme.boxShadow};
@@ -36,6 +42,16 @@ const CountryCardDiv = styled.div`
   flex-direction: column;
   width: auto;
   height: auto;
+  color: ${({ theme }) => theme.textColor};
+  text-decoration: none;
+
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+  }
 
   @media only screen and (min-width: 768px) {
     margin-bottom: 0;
@@ -68,6 +84,10 @@ const CountryCardDiv = styled.div`
   .test {
     padding: 1rem;
     // flex-basis: 5rem;
+
+    &:link {
+      text-decoration: none;
+    }
   }
 `;
 

@@ -18,7 +18,13 @@ function CountryCards({ countriesArray, input, select }) {
       if (input) return country.name.includes(inputClean(input));
       else return country;
     })
-    .map((country, index) => <CountryCard key={index} country={country} />);
+    .map((country, index) => (
+      <CountryCard
+        key={index}
+        country={country}
+        allCountries={countriesArray}
+      />
+    ));
 
   return (
     <StyledSection>{countriesArray.length > 0 && countries}</StyledSection>
