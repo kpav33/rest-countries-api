@@ -39,7 +39,10 @@ function App() {
         </Route>
         <Route
           exact
-          path={["/country/:countryName", "rest-countries-api/subpage"]}
+          path={[
+            "/country/:countryName",
+            "rest-countries-api/country/:countryName",
+          ]}
         >
           <Subpage />
         </Route>

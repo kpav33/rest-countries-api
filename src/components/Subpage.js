@@ -42,59 +42,71 @@ function Subpage() {
         Back
       </StyledLink>
       <CountryContainer>
-        <img src={country.flag} alt={`${country.name} flag`} />
-        <h2>{country.name}</h2>
-        <p>
-          <span style={{ fontWeight: "600" }}>Native name: </span>
-          {country.nativeName}
-        </p>
-        <p>
-          <span style={{ fontWeight: "600" }}>Population: </span>
-          {country.population.toLocaleString()}
-        </p>
-        <p>
-          <span style={{ fontWeight: "600" }}>Region: </span>
-          {country.region}
-        </p>
-        <p>
-          <span style={{ fontWeight: "600" }}>Sub Region: </span>
-          {country.subregion}
-        </p>
-        <p>
-          <span style={{ fontWeight: "600" }}>Capital: </span>
-          {country.capital}
-        </p>
-        <br />
-        <p>
-          <span style={{ fontWeight: "600" }}>Top Level Domain: </span>
-          {country.topLevelDomain.join(", ")}
-        </p>
-        <p>
-          <span style={{ fontWeight: "600" }}>Currencies: </span>
-          {currencies.join(", ")}
-        </p>
-        <p>
-          <span style={{ fontWeight: "600" }}>Languages: </span>
-          {languages.join(", ")}
-        </p>
-        <br />
-        <h3>Border Countries</h3>
-        <BorderCountriesDiv>
-          {arrayNames.length > 0
-            ? arrayNames.map((country, index) => (
-                <StyledLinkBorder
-                  key={index}
-                  role="button"
-                  to={{
-                    pathname: `/country/${country.name}`,
-                    state: [country, countriesArray],
-                  }}
-                >
-                  {country.name}
-                </StyledLinkBorder>
-              ))
-            : "No bordering countries."}
-        </BorderCountriesDiv>
+        <div className="img">
+          <img src={country.flag} alt={`${country.name} flag`} />
+        </div>
+        <div className="country">
+          <h2>{country.name}</h2>
+          <div className="test">
+            <div>
+              <p>
+                <span style={{ fontWeight: "600" }}>Native name: </span>
+                {country.nativeName}
+              </p>
+              <p>
+                <span style={{ fontWeight: "600" }}>Population: </span>
+                {country.population.toLocaleString()}
+              </p>
+              <p>
+                <span style={{ fontWeight: "600" }}>Region: </span>
+                {country.region}
+              </p>
+              <p>
+                <span style={{ fontWeight: "600" }}>Sub Region: </span>
+                {country.subregion}
+              </p>
+              <p>
+                <span style={{ fontWeight: "600" }}>Capital: </span>
+                {country.capital}
+              </p>
+            </div>
+            <div className="right">
+              <br />
+              <p>
+                <span style={{ fontWeight: "600" }}>Top Level Domain: </span>
+                {country.topLevelDomain.join(", ")}
+              </p>
+              <p>
+                <span style={{ fontWeight: "600" }}>Currencies: </span>
+                {currencies.join(", ")}
+              </p>
+              <p>
+                <span style={{ fontWeight: "600" }}>Languages: </span>
+                {languages.join(", ")}
+              </p>
+              <br />
+            </div>
+          </div>
+          <div>
+            <h3>Border Countries</h3>
+            <BorderCountriesDiv>
+              {arrayNames.length > 0
+                ? arrayNames.map((country, index) => (
+                    <StyledLinkBorder
+                      key={index}
+                      role="button"
+                      to={{
+                        pathname: `/country/${country.name}`,
+                        state: [country, countriesArray],
+                      }}
+                    >
+                      {country.name}
+                    </StyledLinkBorder>
+                  ))
+                : "No bordering countries."}
+            </BorderCountriesDiv>
+          </div>
+        </div>
       </CountryContainer>
     </SubpageSection>
   );
@@ -141,8 +153,45 @@ const CountryContainer = styled.div`
   width: 100%;
   padding: 2rem 1rem;
 
+  @media only screen and (min-width: 768px) {
+    display: flex;
+    padding: 2rem 0;
+  }
+
+  .img {
+    @media only screen and (min-width: 768px) {
+      width: 40%;
+    }
+  }
+
+  .country {
+    @media only screen and (min-width: 768px) {
+      padding-left: 4rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .test {
+      @media only screen and (min-width: 768px) {
+        // padding-left: 4rem;
+        display: flex;
+        flex-direction: row;
+      }
+
+      .right {
+        @media only screen and (min-width: 768px) {
+          padding-left: 4rem;
+        }
+      }
+    }
+  }
+
   img {
     width: 100%;
+
+    @media only screen and (min-width: 768px) {
+      width: 100%;
+    }
   }
 `;
 
