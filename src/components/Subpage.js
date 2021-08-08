@@ -25,7 +25,7 @@ function Subpage() {
 
   return (
     <SubpageSection>
-      <StyledLink role="button" to="/">
+      <StyledLink role="button" to="/rest-countries-api">
         <IoIosArrowRoundBack size="26px" />
         Back
       </StyledLink>
