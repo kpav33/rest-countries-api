@@ -5,7 +5,7 @@ import SearchBar from "./SearchBar";
 import FilterByRegion from "./FilterByRegion";
 import CountryCards from "./CountryCards";
 
-function Main() {
+function Main(theme) {
   const [input, setInput] = useState("");
 
   function handleChange(event) {
@@ -34,6 +34,11 @@ function Main() {
     setSelect(value);
   }
 
+  function handleChangeFilter(value) {
+    // console.log(value);
+    setSelect(value.label);
+  }
+
   // console.log(select);
 
   // Wrap input with a form???
@@ -45,6 +50,8 @@ function Main() {
         <FilterByRegion
           select={select}
           handleFilterRegion={handleFilterRegion}
+          handleChangeFilter={handleChangeFilter}
+          theme={theme}
         />
       </StyledFiltersDiv>
       <CountryCards

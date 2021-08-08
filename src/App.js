@@ -35,7 +35,7 @@ function App() {
       <Header theme={theme} themeToggler={themeToggler} />
       <Switch>
         <Route exact path={["/", "/rest-countries-api"]}>
-          <Main />
+          <Main theme={theme} />
         </Route>
         <Route
           path={[

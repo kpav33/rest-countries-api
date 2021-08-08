@@ -11,6 +11,7 @@ function CountryCards({ countriesArray, input, select }) {
   // Don't use index as key!
   const countries = countriesArray
     .filter((country) => {
+      if (select === "World") return country;
       if (select) return country.region === select;
       else return country;
     })
