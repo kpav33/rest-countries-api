@@ -6,7 +6,7 @@ function CountryCard({ country, allCountries }) {
   return (
     <CountryCardLink
       to={{
-        pathname: `/country/${country.name}`,
+        pathname: `/rest-countries-api/country/${country.name}`,
         state: [country, allCountries],
       }}
     >

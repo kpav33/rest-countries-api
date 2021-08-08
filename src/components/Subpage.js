@@ -82,7 +82,7 @@ function Subpage() {
                       key={index}
                       role="button"
                       to={{
-                        pathname: `/country/${country.name}`,
+                        pathname: `/rest-countries-api/country/${country.name}`,
                         state: [country, countriesArray],
                       }}
                     >
