@@ -1,23 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { useParams, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { IoIosArrowRoundBack } from "react-icons/io";
 
 function Subpage() {
-  // const { countryName } = useParams();
   const { state } = useLocation();
-  // console.log(countryName);
-  // console.log(state);
   const [country, countriesArray] = state;
-  // console.log(country);
-  // console.log(country, countriesArray);
-  // console.log(array);
-  //     const thisProduct = productsData.find(prod => prod.id === productId)
-  // cioc
   const borderCountries = country.borders;
-  //console.log(borderCountries);
-  //console.log(countriesArray);
 
   let arrayNames = [];
   countriesArray.map((country) => {
@@ -29,11 +19,9 @@ function Subpage() {
     }
     return null;
   });
-  // console.log(arrayNames);
 
   const currencies = country.currencies.map((currency) => currency.name);
   const languages = country.languages.map((language) => language.name);
-  // console.log(languages);
 
   return (
     <SubpageSection>
@@ -47,8 +35,8 @@ function Subpage() {
         </div>
         <div className="country">
           <h2>{country.name}</h2>
-          <div className="test">
-            <div>
+          <div className="countryInfo">
+            <div className="left">
               <p>
                 <span style={{ fontWeight: "600" }}>Native name: </span>
                 {country.nativeName}
@@ -71,7 +59,6 @@ function Subpage() {
               </p>
             </div>
             <div className="right">
-              <br />
               <p>
                 <span style={{ fontWeight: "600" }}>Top Level Domain: </span>
                 {country.topLevelDomain.join(", ")}
@@ -84,11 +71,10 @@ function Subpage() {
                 <span style={{ fontWeight: "600" }}>Languages: </span>
                 {languages.join(", ")}
               </p>
-              <br />
             </div>
           </div>
           <div>
-            <h3>Border Countries</h3>
+            <h3>Border Countries:</h3>
             <BorderCountriesDiv>
               {arrayNames.length > 0
                 ? arrayNames.map((country, index) => (
@@ -112,13 +98,8 @@ function Subpage() {
   );
 }
 
-/* to={{
-    pathname: `/country/${name}`,
-    state: [country, allCountries],
-  }}*/
-
 const SubpageSection = styled.section`
-  padding: 3rem 1rem;
+  padding: 3rem 1rem 1rem 1rem;
 
   @media only screen and (min-width: 768px) {
     padding: 3rem 4rem;
@@ -150,8 +131,8 @@ const StyledLink = styled(Link)`
 `;
 
 const CountryContainer = styled.div`
-  width: 100%;
   padding: 2rem 1rem;
+  margin-top: 1rem;
 
   @media only screen and (min-width: 768px) {
     display: flex;
@@ -160,7 +141,7 @@ const CountryContainer = styled.div`
 
   .img {
     @media only screen and (min-width: 768px) {
-      width: 40%;
+      width: 450px;
     }
   }
 
@@ -171,16 +152,17 @@ const CountryContainer = styled.div`
       flex-direction: column;
     }
 
-    .test {
+    .countryInfo {
       @media only screen and (min-width: 768px) {
-        // padding-left: 4rem;
         display: flex;
         flex-direction: row;
       }
 
       .right {
+        padding: 1rem 0;
+
         @media only screen and (min-width: 768px) {
-          padding-left: 4rem;
+          padding: 0 0 0 4rem;
         }
       }
     }
@@ -188,10 +170,6 @@ const CountryContainer = styled.div`
 
   img {
     width: 100%;
-
-    @media only screen and (min-width: 768px) {
-      width: 100%;
-    }
   }
 `;
 
@@ -207,8 +185,6 @@ const StyledLinkBorder = styled(Link)`
   background: ${({ theme }) => theme.elementsColor};
   border-radius: 5px;
   margin: 6px;
-  //box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  //position: relative;
 
   &:focus,
   &:hover,
