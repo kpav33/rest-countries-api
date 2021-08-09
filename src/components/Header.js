@@ -7,13 +7,13 @@ import { IoMoonSharp } from "react-icons/io5";
 function Header({ theme, themeToggler }) {
   const light = (
     <>
-      <IoMoonOutline size="14px" /> Dark Mode
+      <IoMoonOutline size="14px" title="dark" /> Dark Mode
     </>
   );
 
   const dark = (
     <>
-      <IoMoonSharp size="14px" /> Light Mode
+      <IoMoonSharp size="14px" title="light" /> Light Mode
     </>
   );
 
