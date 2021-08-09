@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import { AiOutlineSearch } from "react-icons/ai";
 
@@ -16,6 +17,11 @@ function SearchBar({ input, handleChange }) {
     </SearchBarWrapper>
   );
 }
+
+SearchBar.propTypes = {
+  input: PropTypes.string.isRequired,
+  handleChange: PropTypes.func.isRequired,
+};
 
 const StyledInput = styled.input`
   width: 100%;
@@ -71,7 +77,6 @@ const SearchBarWrapper = styled.div`
 
     @media only screen and (min-width: 768px) {
       right: 90%;
-      // top: 27%;
     }
   }
 `;

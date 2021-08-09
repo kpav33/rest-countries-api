@@ -1,13 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 // import styled from "styled-components";
 import Select from "react-select";
 
-function FilterByRegion({
-  select,
-  handleFilterRegion,
-  handleChangeFilter,
-  theme,
-}) {
+function FilterByRegion({ handleChangeFilter, theme }) {
+  // react-select possible options
   const options = [
     { value: "Africa", label: "Africa" },
     { value: "Americas", label: "Americas" },
@@ -17,13 +14,13 @@ function FilterByRegion({
     { value: "World", label: "World" },
   ];
 
-  let themeCurrentLight = theme.theme === "light";
+  // Custom styling for react-select
+  let themeCurrentLight = theme === "light";
 
   const colourStyles = {
     control: (styles) => ({
       ...styles,
       width: "200px",
-      //marginTop: "1rem",
       padding: "0.4rem",
       borderRadius: "5px",
       border: "none",
@@ -117,6 +114,11 @@ function FilterByRegion({
     </>
   );
 }
+
+FilterByRegion.propTypes = {
+  handleChangeFilter: PropTypes.func.isRequired,
+  theme: PropTypes.string.isRequired,
+};
 
 /*const StyledSelect = styled.select`
   margin-top: 1rem;

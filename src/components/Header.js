@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import { IoMoonOutline } from "react-icons/io5";
 import { IoMoonSharp } from "react-icons/io5";
@@ -25,6 +26,11 @@ function Header({ theme, themeToggler }) {
     </HeaderStyled>
   );
 }
+
+Header.propTypes = {
+  theme: PropTypes.string.isRequired,
+  themeToggler: PropTypes.func.isRequired,
+};
 
 const HeaderStyled = styled.header`
   display: flex;

@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import SearchBar from "./SearchBar";
 import FilterByRegion from "./FilterByRegion";
 import CountryCards from "./CountryCards";
 
-function Main(theme) {
+function Main({ theme }) {
+  // Track users input into the input field
   const [input, setInput] = useState("");
 
   function handleChange(event) {
@@ -13,11 +15,8 @@ function Main(theme) {
     setInput(value);
   }
 
-  //console.log(input);
-
+  // Fetch array of countries from the API and store it
   const [countriesArray, setCountriesArray] = useState([]);
-
-  // console.log(countriesArray[0]);
 
   useEffect(() => {
     fetch("https://restcountries.eu/rest/v2/all")
@@ -30,32 +29,25 @@ function Main(theme) {
       });
   }, []);
 
+  // Track users choice from the select field
   const [select, setSelect] = useState("");
 
+  /* Replaced with react-select
   function handleFilterRegion(event) {
     const { value } = event.target;
     setSelect(value);
   }
+  */
 
   function handleChangeFilter(value) {
-    // console.log(value);
     setSelect(value.label);
   }
-
-  // console.log(select);
-
-  // Wrap input with a form???
 
   return (
     <StyledMain>
       <StyledFiltersDiv>
         <SearchBar input={input} handleChange={handleChange} />
-        <FilterByRegion
-          select={select}
-          handleFilterRegion={handleFilterRegion}
-          handleChangeFilter={handleChangeFilter}
-          theme={theme}
-        />
+        <FilterByRegion handleChangeFilter={handleChangeFilter} theme={theme} />
       </StyledFiltersDiv>
       <CountryCards
         countriesArray={countriesArray}
@@ -65,6 +57,10 @@ function Main(theme) {
     </StyledMain>
   );
 }
+
+Main.propTypes = {
+  theme: PropTypes.string.isRequired,
+};
 
 const StyledMain = styled.main`
   padding: 1rem;

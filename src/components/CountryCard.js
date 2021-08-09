@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
@@ -10,10 +11,10 @@ function CountryCard({ country, allCountries }) {
         state: [country, allCountries],
       }}
     >
-      <div className="imgTest">
+      <div className="img">
         <img src={country.flag} alt={`${country.name} flag`} />
       </div>
-      <div className="test">
+      <div className="infoCard">
         <h2>{country.name}</h2>
         <p>
           <span style={{ fontWeight: "600" }}>Population: </span>
@@ -31,6 +32,11 @@ function CountryCard({ country, allCountries }) {
     </CountryCardLink>
   );
 }
+
+CountryCard.propTypes = {
+  country: PropTypes.object.isRequired,
+  allCountries: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 const CountryCardLink = styled(Link)`
   border-radius: 10px 10px 10px 10px;
@@ -57,7 +63,7 @@ const CountryCardLink = styled(Link)`
     margin-bottom: 0;
   }
 
-  .imgTest {
+  .img {
     width: 100%;
     // height: 200px;
     border-bottom: ${({ theme }) => theme.borderBottom};
@@ -81,7 +87,7 @@ const CountryCardLink = styled(Link)`
     }
   }
 
-  .test {
+  .infoCard {
     padding: 1rem;
     // flex-basis: 5rem;
 

@@ -1,3 +1,4 @@
+// Dark theme
 export const darkTheme = {
   textColor: "hsl(0, 0%, 100%)",
   elementsColor: "hsl(209, 23%, 22%)",
@@ -8,6 +9,7 @@ export const darkTheme = {
   boxShadowHeader: "none",
 };
 
+// Light theme
 export const lightTheme = {
   textColor: "hsl(200, 15%, 8%)",
   elementsColor: "hsl(0, 0%, 100%)",

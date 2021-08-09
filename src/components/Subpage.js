@@ -5,10 +5,14 @@ import { useLocation } from "react-router-dom";
 import { IoIosArrowRoundBack } from "react-icons/io";
 
 function Subpage() {
+  // Get stored state with the useLocation hook
   const { state } = useLocation();
+  // Destrucutre the state
   const [country, countriesArray] = state;
   const borderCountries = country.borders;
 
+  // Create a new array that contains object of countries that are bordering on the current country
+  // This will be used to get the full names of the bordering countries
   let arrayNames = [];
   countriesArray.map((country) => {
     const alpha3Code = borderCountries.find(
@@ -20,7 +24,9 @@ function Subpage() {
     return null;
   });
 
+  // Array of countries currencies
   const currencies = country.currencies.map((currency) => currency.name);
+  // Array of countries languages
   const languages = country.languages.map((language) => language.name);
 
   return (

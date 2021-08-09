@@ -1,14 +1,16 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import CountryCard from "./CountryCard";
 
 function CountryCards({ countriesArray, input, select }) {
+  // Parse input to make sure it always starts with a capital letter
   function inputClean(string) {
     return string[0].toUpperCase() + string.slice(1).toLowerCase();
   }
 
-  // Don't use index as key!
+  // Display the correct countries based on the user's input and chosen filter
   const countries = countriesArray
     .filter((country) => {
       if (select === "World") return country;
@@ -31,6 +33,12 @@ function CountryCards({ countriesArray, input, select }) {
     <StyledSection>{countriesArray.length > 0 && countries}</StyledSection>
   );
 }
+
+CountryCards.propTypes = {
+  countriesArray: PropTypes.arrayOf(PropTypes.object).isRequired,
+  input: PropTypes.string.isRequired,
+  select: PropTypes.string.isRequired,
+};
 
 const StyledSection = styled.section`
   padding: 2rem 2rem 0 2rem;
