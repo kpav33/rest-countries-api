@@ -24,6 +24,9 @@ function Main(theme) {
       .then((response) => response.json())
       .then((data) => {
         setCountriesArray(data);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   }, []);
 
