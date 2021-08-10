@@ -4,10 +4,14 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 function CountryCard({ country, allCountries }) {
+  // Replace empty spaces with - from country names for URL
+  let subPageName = country.name;
+  subPageName = subPageName.replace(/\s+/g, "-").toLowerCase();
+
   return (
     <CountryCardLink
       to={{
-        pathname: `/rest-countries-api/country/${country.name}`,
+        pathname: `/rest-countries-api/country/${subPageName}`,
         state: [country, allCountries],
       }}
     >

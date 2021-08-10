@@ -88,7 +88,9 @@ function Subpage() {
                       key={index}
                       role="button"
                       to={{
-                        pathname: `/rest-countries-api/country/${country.name}`,
+                        pathname: `/rest-countries-api/country/${country.name
+                          .replace(/\s+/g, "-")
+                          .toLowerCase()}`,
                         state: [country, countriesArray],
                       }}
                     >
