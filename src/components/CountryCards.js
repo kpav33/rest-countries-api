@@ -6,9 +6,11 @@ import CountryCard from "./CountryCard";
 
 function CountryCards({ countriesArray, input, select }) {
   // Parse input to make sure it always starts with a capital letter
+  /* Replaced by using toLowerCase() in filter method
   function inputClean(string) {
     return string[0].toUpperCase() + string.slice(1).toLowerCase();
   }
+  */
 
   // Display the correct countries based on the user's input and chosen filter
   const countries = countriesArray
@@ -18,7 +20,7 @@ function CountryCards({ countriesArray, input, select }) {
       else return country;
     })
     .filter((country) => {
-      if (input) return country.name.includes(inputClean(input));
+      if (input) return country.name.toLowerCase().includes(input);
       else return country;
     })
     .map((country, index) => (
