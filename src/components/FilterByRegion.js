@@ -103,6 +103,7 @@ function FilterByRegion({ handleChangeFilter, theme }) {
         <option value="Oceania">Oceania</option>
       </StyledSelect>*/}
       <Select
+        classNamePrefix="list"
         options={options}
         styles={colourStyles}
         onChange={handleChangeFilter}

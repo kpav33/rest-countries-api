@@ -14,6 +14,7 @@ function CountryCard({ country, allCountries }) {
         pathname: `/rest-countries-api/country/${subPageName}`,
         state: [country, allCountries],
       }}
+      data-testid="country-div-element"
     >
       <div className="img">
         <img src={country.flag} alt={`${country.name} flag`} />
