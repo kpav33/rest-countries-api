@@ -19,7 +19,7 @@ function Main({ theme }) {
   const [countriesArray, setCountriesArray] = useState([]);
 
   useEffect(() => {
-    fetch("https://restcountries.eu/rest/v2/all")
+    fetch("https://restcountries.com/v2/all")
       .then((response) => response.json())
       .then((data) => {
         setCountriesArray(data);
