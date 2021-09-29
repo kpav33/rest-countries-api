@@ -1,10 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
 
-import App from "./App";
-import Header from "./components/Header";
-
-const mockedThemeToggler = jest.fn();
+import App from "../../App";
 
 describe("App tests", () => {
   test("renders without crashing", () => {
@@ -17,17 +14,26 @@ describe("App tests", () => {
     );
   });
 
-  test("themeToggler function", () => {
+  test("toggle theme to dark mode", () => {
     render(
       <Router>
-        <App>
-          <Header theme="light" themeToggler={mockedThemeToggler} />
-        </App>
+        <App />
       </Router>
     );
     const buttonElement = screen.getByRole("button", { name: /dark mode/i });
     fireEvent.click(buttonElement);
-    // Doesn't pass the tests???
-    // expect(mockedThemeToggler).toHaveBeenCalledTimes(1);
+    expect(buttonElement).toHaveTextContent(/light mode/i);
+  });
+
+  test("toggle theme to dark mode and back to light mode", () => {
+    render(
+      <Router>
+        <App />
+      </Router>
+    );
+    const buttonElement = screen.getByRole("button", { name: /dark mode/i });
+    fireEvent.click(buttonElement);
+    fireEvent.click(buttonElement);
+    expect(buttonElement).toHaveTextContent(/dark mode/i);
   });
 });
